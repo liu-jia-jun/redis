@@ -1,10 +1,16 @@
 package com.redis_springboot;
 
+import com.alibaba.fastjson.JSON;
+import com.redis_springboot.util.RedisUtil;
+import com.redis_springboot.util.RedisUtils;
+
+import net.minidev.json.JSONObject;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.RedisTemplate;
+
+import javax.annotation.Resource;
 
 @SpringBootTest
 class RedisSpringbootApplicationTests {
@@ -25,9 +31,9 @@ class RedisSpringbootApplicationTests {
      * eg:  redisTemplate.opsForValue().set("name","刘佳俊");
      *
      */
-    @Autowired
-    RedisTemplate redisTemplate;
 
+    @Resource
+    RedisTemplate<String,Object> redisTemplate;
 
     @Test
     void redisTest(){
@@ -35,12 +41,25 @@ class RedisSpringbootApplicationTests {
         redisTemplate.opsForValue().set("name","刘佳俊");
         System.out.println(redisTemplate.opsForValue().get("name"));
 
-
+        RedisUtils redisUtil = new RedisUtils();
+        System.out.println(redisUtil.get("name"));
 
 //        获取redis的连接对
-        RedisConnection connection = redisTemplate.getConnectionFactory().getConnection();
+//        RedisConnection connection = redisTemplate.getConnectionFactory().getConnection();
 //        对redis数据库连接对象进行操作
-        connection.flushDb();
+//        connection.flushDb();
+
+    }
+
+
+    @Test
+    void redisUtilTest(){
+//        RedisUtils redisUtil = new RedisUtils();
+//        System.out.println(redisUtil.get("name"));
+        String name ="name";
+        String json= JSON.toJSONString(name);
+
+        System.out.println(redisTemplate.opsForValue().get("name"));
     }
 
 }

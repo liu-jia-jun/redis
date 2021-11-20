@@ -1,5 +1,6 @@
 package com.redis_springboot.util;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 
 import org.springframework.stereotype.Component;
@@ -14,8 +15,9 @@ import java.util.concurrent.TimeUnit;
 @Component
 public final class RedisUtil {
 
+
     @Resource
-    private RedisTemplate<String, Object> redisTemplate;
+    RedisTemplate<String,Object> redisTemplate;
 
 
     public Set<String> keys(String keys){
