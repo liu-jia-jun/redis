@@ -16,7 +16,7 @@ public class TestPing {
         System.out.println(jedis.ping());
         System.out.println(jedis.flushDB());
         System.out.println(jedis.select(1));
-        
+
 
 
 
