@@ -1,13 +1,9 @@
 package com.redis_springboot;
 
 import com.alibaba.fastjson.JSON;
-import com.redis_springboot.util.RedisUtil;
 import com.redis_springboot.util.RedisUtils;
-
-import net.minidev.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.RedisTemplate;
 
 import javax.annotation.Resource;
